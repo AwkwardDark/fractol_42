@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math_utils.c                                       :+:      :+:    :+:   */
+/*   ft_str_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pajimene <pajimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 14:01:42 by pajimene          #+#    #+#             */
-/*   Updated: 2024/06/04 15:08:17 by pajimene         ###   ########.fr       */
+/*   Created: 2024/06/04 12:58:58 by pajimene          #+#    #+#             */
+/*   Updated: 2024/06/04 14:22:27 by pajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_complex	ft_sum_complex(t_complex z1, t_complex z2)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_complex	res;
-
-	res.x = z1.x + z2.x;
-	res.y = z1.y + z2.y;
-	return (res);
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
 }
 
-t_complex	ft_square_complex(t_complex z)
+int	ft_strncmp(char *s1, char *s2, int n)
 {
-	t_complex	res;
+	int	i;
 
-	res.x = (z.x * z.x) - (z.y * z.y);
-	res.y = 2 * z.x * z.y;
-	return (res);
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] && s2[i] && i < n - 1 && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }
 
-double	ft_scale(double number, double new_min, double new_max, double old_max)
+int	ft_strlen(char *str)
 {
-	return ((new_max - new_min) * number / old_max + new_min);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
