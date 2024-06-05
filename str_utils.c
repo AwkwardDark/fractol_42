@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_utils.c                                     :+:      :+:    :+:   */
+/*   str_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pajimene <pajimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:58:58 by pajimene          #+#    #+#             */
-/*   Updated: 2024/06/04 14:22:27 by pajimene         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:14:27 by pajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,32 @@ int	ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+double ft_atod(char *str)
+{
+	double	nb;
+	double	frac;
+	int		i;
+	int		sign;
+
+	i = 0;
+	sign = 1;
+	nb = 0;
+	frac = 0.1;
+
+	if (str[i] == '-')
+	{
+		sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '.')
+		nb = nb * 10 + (str[i++] - 48);
+	i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb + (frac * (str[i++] - 48));
+		frac /= 10;
+	}
+	return (nb * sign);
 }

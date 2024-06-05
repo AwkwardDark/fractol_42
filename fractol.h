@@ -6,7 +6,7 @@
 /*   By: pajimene <pajimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:24:01 by pajimene          #+#    #+#             */
-/*   Updated: 2024/06/04 18:24:23 by pajimene         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:43:20 by pajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,17 @@ typedef struct s_fractal {
 	void	*mlx_win;
 	t_img	img;
 	char	*name;
-	int		iter_def;
-	double		escape;
-	double		x_shift;
-	double		y_shift;
+	int		color_shift;
+	int		iter;
+	double	escape;
+	double	real_julia;
+	double	im_julia;
+	double	x_shift;
+	double	y_shift;
+	double	zoom;
+	double	x_mouse;
+	double	y_mouse;
+	int		track;
 }				t_fractal;
 
 typedef struct s_complex {
@@ -66,15 +73,19 @@ typedef struct s_complex {
 }				t_complex;
 
 //Fractal Utils
-void		ft_data_init(t_fractal *fractal);
+void		ft_data_init(t_fractal *fractal, char *real, char *im);
 void		ft_fractal_init(t_fractal *fractal);
-void		ft_pixel_conv(int x, int y, t_fractal *fractal);
+void		ft_pixel_iter(int x, int y, t_fractal *fractal);
 void		ft_fractal_render(t_fractal *fractal);
+void 		ft_mandel_julia(t_complex *z, t_complex *c, t_fractal *fractal);
+void 		calculate_color(int shift, int *color);
 
 //Events
 void	ft_events_init(t_fractal *fractal);
 int		ft_key(int keysym, t_fractal *fractal);
-
+int		ft_close(t_fractal *fractal);
+int		ft_mouse(int button, int x, int y, t_fractal *fractal);
+int		ft_track(int x, int y, t_fractal *fractal);
 
 //MLX Utils
 void		ft_mlx_pixel_put(t_img *img, int x, int y, int color);
@@ -83,11 +94,14 @@ void		ft_malloc_error(void);
 //Math Utils
 t_complex	ft_sum_complex(t_complex z1, t_complex z2);
 t_complex	ft_square_complex(t_complex z);
+t_complex	ft_burning_bird(t_complex z);
 double		ft_scale(double nb, double new_min, double new_max, double old_max);
+double		ft_abs(double d);
 
 //String Utils
 void		ft_putstr_fd(char *s, int fd);
 int			ft_strncmp(char *s1, char *s2, int n);
 int			ft_strlen(char *str);
+double 		ft_atod(char *str);
 
 #endif
