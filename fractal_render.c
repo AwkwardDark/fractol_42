@@ -6,13 +6,13 @@
 /*   By: pajimene <pajimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:36:50 by pajimene          #+#    #+#             */
-/*   Updated: 2024/06/05 21:48:29 by pajimene         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:54:20 by pajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void ft_mandel_julia(t_complex *z, t_complex *c, t_fractal *fractal)
+void	ft_mandel_julia(t_complex *z, t_complex *c, t_fractal *fractal)
 {
 	if (!ft_strncmp(fractal->name, "julia", 5))
 	{
@@ -45,7 +45,7 @@ void	ft_pixel_iter(int x, int y, t_fractal *fractal)
 			z = ft_sum_complex(ft_square_complex(z), c);
 		if (z.x * z.x + z.y * z.y > fractal->escape)
 		{
-			color = ft_scale(i, BLACK, WHITE, fractal->iter);
+			color = ft_scale(i, 0, fractal->color, fractal->iter);
 			ft_mlx_pixel_put(&fractal->img, x, y, color);
 			return ;
 		}

@@ -6,11 +6,11 @@
 #    By: pajimene <pajimene@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/30 14:20:42 by pajimene          #+#    #+#              #
-#    Updated: 2024/06/05 19:54:59 by pajimene         ###   ########.fr        #
+#    Updated: 2024/06/07 12:33:23 by pajimene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 	= fractol
+NAME 		= fractol
 
 CC 			= cc
 
@@ -20,15 +20,16 @@ MLXFLAGS 	= -lm -lX11 -lXext
 
 MLXLIB 		= mlx/libmlx_Linux.a 
 
-SRC 	=	main.c \
-			fractal_init.c \
-			fractal_render.c \
-			events_handler.c \
-			mlx_utils.c \
-			str_utils.c \
-			math_utils.c
+SRC 		=	main.c \
+				fractal_init.c \
+				fractal_render.c \
+				key_handler.c \
+				mouse_handler.c \
+				mlx_utils.c \
+				str_utils.c \
+				math_utils.c
 
-OBJ 	= $(SRC:.c=.o)
+OBJ 		= $(SRC:.c=.o)
 
 all: $(NAME)
 

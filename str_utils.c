@@ -6,7 +6,7 @@
 /*   By: pajimene <pajimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:58:58 by pajimene          #+#    #+#             */
-/*   Updated: 2024/06/05 18:14:27 by pajimene         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:03:06 by pajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-double ft_atod(char *str)
+double	ft_atod(char *str)
 {
 	double	nb;
 	double	frac;
@@ -52,7 +52,6 @@ double ft_atod(char *str)
 	sign = 1;
 	nb = 0;
 	frac = 0.1;
-
 	if (str[i] == '-')
 	{
 		sign *= -1;

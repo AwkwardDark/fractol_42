@@ -6,13 +6,13 @@
 /*   By: pajimene <pajimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:01:42 by pajimene          #+#    #+#             */
-/*   Updated: 2024/06/05 20:01:40 by pajimene         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:02:43 by pajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double		ft_abs(double d)
+double	ft_abs(double d)
 {
 	if (d < 0)
 		d *= -1;
@@ -40,7 +40,7 @@ t_complex	ft_square_complex(t_complex z)
 t_complex	ft_burning_bird(t_complex z)
 {
 	t_complex	res;
-	
+
 	res.x = (z.x * z.x) - (z.y * z.y);
 	res.y = 2 * z.x * ft_abs(z.y);
 	return (res);

@@ -6,7 +6,7 @@
 /*   By: pajimene <pajimene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:30:19 by pajimene          #+#    #+#             */
-/*   Updated: 2024/06/05 21:34:51 by pajimene         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:06:18 by pajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,22 @@ void	ft_data_init(t_fractal *fractal, char *real, char *im)
 		fractal->real_julia = ft_atod(real);
 		fractal->im_julia = ft_atod(im);
 	}
-	fractal->color_shift = 0;
+	fractal->color = BLUE;
 	fractal->iter = 50;
 	fractal->escape = 4;
 	fractal->x_shift = 0;
 	fractal->y_shift = 0;
 	fractal->zoom = 1;
-	fractal->x_mouse = 0;
-	fractal->y_mouse = 0;
-	fractal->track = 0;
+	fractal->track_julia = 0;
+	fractal->psychedelic_flag = -1;
 }
 
 void	ft_events_init(t_fractal *fractal)
 {
 	mlx_hook(fractal->mlx_win, KeyPress, KeyPressMask, ft_key, fractal);
 	mlx_hook(fractal->mlx_win, ButtonPress, ButtonPressMask, ft_mouse, fractal);
-	mlx_hook(fractal->mlx_win, MotionNotify, PointerMotionMask, ft_track, fractal);
-	mlx_hook(fractal->mlx_win, DestroyNotify, StructureNotifyMask, ft_close, fractal);
+	mlx_hook(fractal->mlx_win, MotionNotify, PointerMotionMask, track, fractal);
+	mlx_hook(fractal->mlx_win, DestroyNotify, StructureNotifyMask, xw, fractal);
 }
 
 void	ft_fractal_init(t_fractal *fractal)
